@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblia Web</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Biblia Web</h1>
+    <nav id="main-nav">
+        <a href="#" onclick="loadSection('')">La Biblia</a>
+        <a href="#" onclick="loadSection('historicos')">Históricos</a>
+        <a href="#" onclick="loadSection('profeticos')">Proféticos</a>
+        <a href="#" onclick="loadSection('cartas')">Cartas</a>
+        <a href="#" onclick="loadSection('evangelicos')">Evangélicos</a>
+    </nav>
+    <div id="content">
+        <h2 id="section-title"></h2>
+        <ul id="books"></ul>
+        <h3 id="chapter-title"></h3>
+        <ul id="verses"></ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
