@@ -1,2 +1,0 @@
-# bjerusalen
-Biblia de Jerusalen
