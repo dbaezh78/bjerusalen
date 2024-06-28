@@ -36,8 +36,8 @@ body {
     border: 1px solid #bbb;
     border-radius: 5px;
     text-align: center;
-    min-width: 30px;  /* Ancho mínimo para los capítulos */
-    flex: 0 1 auto;   /* Permite que los capítulos se ajusten en una fila */
+    width: 30px;
+    flex: 0 1 auto;
 }
 
 .chapter-content {
