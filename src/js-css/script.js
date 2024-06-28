@@ -28,40 +28,40 @@ async function loadSection(section) {
         // Suponiendo que cada libro es una carpeta, puedes añadir los nombres de los libros manualmente
         if (section === 'historicos') {
             booksList.innerHTML = `
-                <li><a href="#" onclick="loadChapter('historicos', 'genesis', 'gn1'); return false;">Génesis, Capítulo 1</a></li>
-                <li><a href="#" onclick="loadChapter('historicos', 'genesis', 'gn2'); return false;">Génesis, Capítulo 2</a></li>
+                <li><a href="#" onclick="loadChapter('src/historicos/genesis', 'gn1'); return false;">Génesis, Capítulo 1</a></li>
+                <li><a href="#" onclick="loadChapter('src/historicos/genesis', 'gn2'); return false;">Génesis, Capítulo 2</a></li>
                 <!-- Añade más enlaces según sea necesario -->
             `;
         } else if (section === 'profeticos') {
             booksList.innerHTML = `
-                <li><a href="#" onclick="loadChapter('profeticos', 'libro2', 'capitulo1'); return false;">Libro 2, Capítulo 1</a></li>
-                <li><a href="#" onclick="loadChapter('profeticos', 'libro2', 'capitulo2'); return false;">Libro 2, Capítulo 2</a></li>
+                <li><a href="#" onclick="loadChapter('src/profeticos/libro2', 'capitulo1'); return false;">Libro 2, Capítulo 1</a></li>
+                <li><a href="#" onclick="loadChapter('src/profeticos/libro2', 'capitulo2'); return false;">Libro 2, Capítulo 2</a></li>
                 <!-- Añade más enlaces según sea necesario -->
             `;
         } else if (section === 'cartas') {
             booksList.innerHTML = `
-                <li><a href="#" onclick="loadChapter('cartas', 'libro3', 'capitulo1'); return false;">Libro 3, Capítulo 1</a></li>
-                <li><a href="#" onclick="loadChapter('cartas', 'libro3', 'capitulo2'); return false;">Libro 3, Capítulo 2</a></li>
+                <li><a href="#" onclick="loadChapter('src/cartas/libro3', 'capitulo1'); return false;">Libro 3, Capítulo 1</a></li>
+                <li><a href="#" onclick="loadChapter('src/cartas/libro3', 'capitulo2'); return false;">Libro 3, Capítulo 2</a></li>
                 <!-- Añade más enlaces según sea necesario -->
             `;
         } else if (section === 'evangelicos') {
             booksList.innerHTML = `
-                <li><a href="#" onclick="loadChapter('evangelicos', 'libro4', 'capitulo1'); return false;">Libro 4, Capítulo 1</a></li>
-                <li><a href="#" onclick="loadChapter('evangelicos', 'libro4', 'capitulo2'); return false;">Libro 4, Capítulo 2</a></li>
+                <li><a href="#" onclick="loadChapter('src/evangelicos/libro4', 'capitulo1'); return false;">Libro 4, Capítulo 1</a></li>
+                <li><a href="#" onclick="loadChapter('src/evangelicos/libro4', 'capitulo2'); return false;">Libro 4, Capítulo 2</a></li>
                 <!-- Añade más enlaces según sea necesario -->
             `;
         }
     }
 }
 
-async function loadChapter(category, book, chapter) {
+async function loadChapter(path, chapter) {
     try {
-        const response = await fetch(`${category}/${book}/${chapter}.txt`);
+        const response = await fetch(`${path}/${chapter}.txt`);
         if (!response.ok) {
             throw new Error('Capítulo no encontrado');
         }
         const text = await response.text();
-        displayChapter(book, chapter, text);
+        displayChapter(path.split('/').pop(), chapter, text);
     } catch (error) {
         console.error('Error cargando el capítulo:', error);
         document.getElementById('chapter-title').textContent = 'Error cargando el capítulo';
@@ -70,7 +70,7 @@ async function loadChapter(category, book, chapter) {
 }
 
 function displayChapter(book, chapter, text) {
-    const chapterTitle = `${book} - Capítulo ${chapter}`;
+    const chapterTitle = `${book.charAt(0).toUpperCase() + book.slice(1)} - Capítulo ${chapter.replace(/[^0-9]/g, '')}`;
     document.getElementById('chapter-title').textContent = chapterTitle;
 
     const verses = text.split('\n');
