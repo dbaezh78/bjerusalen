@@ -24,7 +24,6 @@ body {
 .chapters {
     display: none;
     padding-left: 20px;
-    display: flex;
     flex-wrap: wrap;
     gap: 10px;
 }
@@ -36,7 +35,8 @@ body {
     border: 1px solid #bbb;
     border-radius: 5px;
     text-align: center;
-    width: 30px;
+    width: 30px;  /* Ancho fijo para los capítulos */
+    box-sizing: border-box;  /* Para incluir el padding y el border en el ancho total */
 }
 
 .chapter-content {
