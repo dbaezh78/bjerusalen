@@ -1,26 +1,26 @@
 function toggleChapters(bookElement) {
     const chapters = bookElement.querySelector('.chapters');
-    const allBooks = document.querySelectorAll('.book .chapters');
-
-    allBooks.forEach(chapter => {
-        if (chapter !== chapters) {
-            chapter.style.display = 'none';
+    
+    // Oculta todos los capítulos abiertos
+    document.querySelectorAll('.chapters').forEach(chapterDiv => {
+        if (chapterDiv !== chapters) {
+            chapterDiv.style.display = 'none';
         }
     });
-
-    chapters.style.display = chapters.style.display === 'block' ? 'none' : 'flex';
+    
+    // Alterna la visibilidad del capítulo del libro seleccionado
+    if (chapters.style.display === 'none' || chapters.style.display === '') {
+        chapters.style.display = 'block';
+    } else {
+        chapters.style.display = 'none';
+    }
 }
 
 function loadChapterContent(filePath) {
-    const contentDiv = document.getElementById('chapter-content');
-    
     fetch(filePath)
         .then(response => response.text())
         .then(data => {
-            contentDiv.textContent = data;
+            document.getElementById('chapter-content').innerText = data;
         })
-        .catch(error => {
-            contentDiv.textContent = 'Error cargando el capítulo';
-            console.error('Error cargando el capítulo:', error);
-        });
+        .catch(error => console.error('Error al cargar el contenido del capítulo:', error));
 }
