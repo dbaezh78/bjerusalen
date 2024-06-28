@@ -8,7 +8,7 @@ function toggleChapters(bookElement) {
         }
     });
 
-    chapters.style.display = chapters.style.display === 'block' ? 'none' : 'block';
+    chapters.style.display = chapters.style.display === 'block' ? 'none' : 'flex';
 }
 
 function loadChapterContent(filePath) {
