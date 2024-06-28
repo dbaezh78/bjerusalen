@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libros de la Biblia</title>
+    <link rel="stylesheet" href="src/js-css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="book" onclick="toggleChapters(this)">
+            Génesis
+            <div class="chapters">
+                <div onclick="loadChapterContent('src/gn/gn1.txt')">Capítulo 1</div>
+                <div onclick="loadChapterContent('src/gn/gn2.txt')">Capítulo 2</div>
+                <div onclick="loadChapterContent('src/gn/gn3.txt')">Capítulo 3</div>
+                <div onclick="loadChapterContent('src/gn/gn4.txt')">Capítulo 4</div>
+                <div onclick="loadChapterContent('src/gn/gn5.txt')">Capítulo 5</div>
+                <div onclick="loadChapterContent('src/gn/gn6.txt')">Capítulo 6</div>
+                <div onclick="loadChapterContent('src/gn/gn7.txt')">Capítulo 7</div>
+                <!-- Añadir hasta Capítulo 50 -->
+            </div>
+        </div>
+        <div class="book" onclick="toggleChapters(this)">
+            Éxodo
+            <div class="chapters">
+                <!-- Añadir capítulos -->
+            </div>
+        </div>
+        <!-- Añadir más libros con el mismo formato -->
+    </div>
+    <div id="chapter-content" class="chapter-content"></div>
+    <script src="src/js-css/script.js"></script>
+</body>
+</html>
